@@ -72,6 +72,27 @@ SELECT JSON_EXTRACT('{
   "age": 18
 }', '$.name');
 
+-- Json Path 表达式
+-- $ 表示根节点
+-- .key 表示对象的 key
+-- [index] 表示数组的索引
+-- [*] 表示数组的所有元素
+SELECT JSON_EXTRACT('{
+  "name": "Tom",
+  "age": 18,
+  "friends": [
+    "Jerry",
+    "Spike"
+  ]
+}', '$.friends[1]') AS friend;
+SELECT JSON_EXTRACT('{
+  "name": "Tom",
+  "age": 18,
+  "info": {
+    "address": "Beijing"
+  }
+}', '$.info.address') AS address;
+
 -- 创建 JSON 对象
 SELECT JSON_OBJECT('name', 'Tom', 'age', 18);
 
