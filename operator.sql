@@ -22,6 +22,7 @@ WHERE age < 30;
 SELECT name, age
 FROM leaders
 WHERE age BETWEEN 30 AND 40;
+select name, age from leaders where age > 30 and age < 40;
 -- 年龄为35或21
 SELECT name, age
 FROM leaders

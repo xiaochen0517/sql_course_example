@@ -58,7 +58,7 @@ SELECT CURRENT_DATE();
 SELECT CURRENT_TIME();
 
 -- 格式化日期
-SELECT DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i');
+SELECT DATE_FORMAT(NOW(), '%Y/%m/%d %H:%i');
 
 # 条件函数示例
 -- 如果 age 大于 30 则返回 'old' 否则返回 'young'
@@ -71,6 +71,10 @@ SELECT JSON_EXTRACT('{
   "name": "Tom",
   "age": 18
 }', '$.name');
+
+# SQL
+# HTTP
+# $.name
 
 -- Json Path 表达式
 -- $ 表示根节点
@@ -107,7 +111,10 @@ SELECT MD5('hello');
 SELECT SHA1('hello');
 
 -- AES 加密
-SELECT AES_ENCRYPT('hello', 'key');
+SELECT HEX(AES_ENCRYPT('hello', '1234'));
+
+-- AES 解密
+SELECT AES_DECRYPT(UNHEX('90D43AC5F01F47361CBDAD1F5FF22715'), '1234');
 
 # 数据库信息函数示例
 -- CONNECTION_ID 获取连接 ID
@@ -118,3 +125,13 @@ SELECT DATABASE();
 
 -- VERSION 获取数据库版本
 SELECT VERSION();
+
+-- 创建函数
+CREATE FUNCTION add_func(a INT, b INT)
+RETURNS INT
+BEGIN
+  RETURN a + b;
+END;
+
+-- 调用函数
+SELECT add_func(2, 3);
